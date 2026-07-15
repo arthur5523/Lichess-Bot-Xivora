@@ -13,9 +13,9 @@ engines:
     silence_stderr: false
     move_overhead_multiplier: 1.0
     uci_options:
-      Threads: 2                       # per game; concurrency 2 => 4 threads on a 4-vCPU Railway box
+      Threads: 4                       # per game; concurrency 2 => 4 threads on a 4-vCPU Railway box
       Hash: 512
-      Move Overhead: 100               # low on Railway EU (~15-25ms to Lichess)
+      Move Overhead: 200               # low on Railway EU (~15-25ms to Lichess)
     limits:                            # required by BotLi; empty = no early move-calc limits
 
 syzygy:
@@ -105,7 +105,7 @@ resign:
   against_humans: true
 
 challenge:
-  concurrency: 2                       # two rated games at once = faster grind (Railway 4 vCPU)
+  concurrency: 1                      # two rated games at once = faster grind (Railway 4 vCPU)
   max_takebacks: 3
   human:
     bullet_with_increment_only: false
@@ -113,7 +113,6 @@ challenge:
       - standard
     time_controls:
       - bullet
-      - blitz
     modes:
       - rated
   bot:
@@ -122,7 +121,6 @@ challenge:
       - standard
     time_controls:
       - bullet
-      - blitz
     modes:
       - rated
 
@@ -157,21 +155,7 @@ whitelist:
 # draw, which wastes the 100 bot-games/day cap and bleeds rating when they're rated below us).
 # Wins only come from non-SF engines that flag at 1+0, so keep the pool pointed at those.
 blacklist:
-  - BOT_Stockfish13
-  - Classic_BOT-v2
-  - ClassicLegendBot_v2
-  - codabot
-  - BlueMoonBot
-  - Moment-That-Inspires
-  - ToromBot
-  - PiFishBob
-  - CookieCompote28
-  - ZaaVeeRRR
-  - chessbot2880
-  - PumpkinBotLite
-  - RubiChessDemolisher
-  - Obsidian-Demolisher
-
+  
 online_blacklists:
 
 books:
